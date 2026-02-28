@@ -1,0 +1,137 @@
+% ==============================================================================
+% ESG Survey: A Comprehensive Review of Environmental, Social, and
+% Governance Literature
+% ==============================================================================
+%
+% Compilation: From Paper/ directory, run:
+%   pdflatex -interaction=nonstopmode esg_survey.tex
+%   bibtex esg_survey
+%   pdflatex -interaction=nonstopmode esg_survey.tex
+%   pdflatex -interaction=nonstopmode esg_survey.tex
+%
+% ==============================================================================
+
+\documentclass[12pt,letterpaper]{article}
+
+% --- Core packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+
+% --- Page layout ---
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\doublespacing
+
+% --- Math ---
+\usepackage{amsmath, amssymb, amsthm}
+
+% --- Tables and figures ---
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{float}
+
+% --- Bibliography ---
+\usepackage{natbib}
+\bibliographystyle{apalike}
+
+% --- Hyperlinks ---
+\usepackage[colorlinks=true,
+            linkcolor=blue,
+            citecolor=blue,
+            urlcolor=blue]{hyperref}
+
+% --- Section labels (add \label{sec:xxx} after each \section) ---
+% Cross-reference convention: \ref{sec:theory}, \ref{sec:climate}, etc.
+
+% --- Header / footer ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\textit{ESG Survey}}
+\lhead{\textit{\nouppercase{\leftmark}}}
+\cfoot{\thepage}
+
+% ==============================================================================
+% TITLE
+% ==============================================================================
+
+\title{\textbf{Environmental, Social, and Governance (ESG) Factors:\\
+A Comprehensive Survey of Theory and Evidence}%
+\thanks{We thank [Acknowledgements TBD].}}
+
+\author{[Author Names TBD]\\
+\small DePauw University}
+
+\date{\today}
+
+% ==============================================================================
+% DOCUMENT
+% ==============================================================================
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+% --- Abstract ---
+\begin{abstract}
+\noindent
+This paper presents a comprehensive review of the rapidly expanding literature
+on environmental, social, and governance (ESG) issues. We highlight recent
+advances in both theoretical modeling and empirical analysis. We first review
+major theoretical ESG models. Following this, we survey empirical research in
+six key areas: (1)~climate risk and insurance, (2)~regulation and policy,
+(3)~ESG effects on investment, consumption, and employment,
+(4)~ESG disclosure and assurance, (5)~the asset management industry, and
+(6)~firm valuation, profitability, cost of capital, and asset pricing.
+While significant progress has been made in understanding the impact of ESG
+factors on firm behavior and market outcomes, we identify important gaps and
+recommend future research directions.
+
+\medskip\noindent
+\textbf{Keywords:} ESG, sustainable finance, corporate governance, climate risk,
+disclosure, asset pricing, cost of capital
+
+\medskip\noindent
+\textbf{JEL Codes:} G12, G32, G34, M14, Q54
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+% ==============================================================================
+% SECTIONS
+% ==============================================================================
+
+\input{sections/intro}
+
+\input{sections/theory}
+
+\input{sections/climate}
+
+\input{sections/regulation}
+
+\input{sections/investment}
+
+\input{sections/disclosure}
+
+\input{sections/asset_mgmt}
+
+\input{sections/valuation}
+
+\input{sections/future}
+
+\input{sections/conclusion}
+
+% ==============================================================================
+% BIBLIOGRAPHY
+% ==============================================================================
+
+\newpage
+\bibliography{../Bibliography_base}
+
+\end{document}

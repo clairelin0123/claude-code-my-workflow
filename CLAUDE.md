@@ -5,9 +5,10 @@
      Keep this file under ~150 lines — Claude loads it every session.
      See the guide at docs/workflow-guide.html for full documentation. -->
 
-**Project:** [YOUR PROJECT NAME]
-**Institution:** [YOUR INSTITUTION]
+**Project:** ESG Survey: A Comprehensive Review of Environmental, Social, and Governance Literature
+**Institution:** DePauw University
 **Branch:** main
+**Primary Artifact:** `Paper/esg_survey.tex` (LaTeX article manuscript)
 
 ---
 
@@ -24,20 +25,18 @@
 ## Folder Structure
 
 ```
-[YOUR-PROJECT]/
-├── CLAUDE.MD                    # This file
+my-project/
+├── CLAUDE.md                    # This file
 ├── .claude/                     # Rules, skills, agents, hooks
-├── Bibliography_base.bib        # Centralized bibliography
-├── Figures/                     # Figures and images
-├── Preambles/header.tex         # LaTeX headers
-├── Slides/                      # Beamer .tex files
-├── Quarto/                      # RevealJS .qmd files + theme
-├── docs/                        # GitHub Pages (auto-generated)
-├── scripts/                     # Utility scripts + R code
+├── Bibliography_base.bib        # Centralized bibliography (all ESG references)
+├── Paper/                       # LaTeX article manuscript (primary)
+│   ├── esg_survey.tex           # Main paper file
+│   └── sections/                # Section stub files (input'd from main)
+├── Figures/                     # Figures, tables, and images
 ├── quality_reports/             # Plans, session logs, merge reports
 ├── explorations/                # Research sandbox (see rules)
 ├── templates/                   # Session log, quality report templates
-└── master_supporting_docs/      # Papers and existing slides
+└── master_supporting_docs/      # Supporting papers and slides
 ```
 
 ---
@@ -45,17 +44,17 @@
 ## Commands
 
 ```bash
-# LaTeX (3-pass, XeLaTeX only)
-cd Slides && TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
-BIBINPUTS=..:$BIBINPUTS bibtex file
-TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
-TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
+# LaTeX article (4-pass: pdflatex + bibtex + 2x pdflatex)
+cd Paper && pdflatex -interaction=nonstopmode esg_survey.tex
+bibtex esg_survey
+pdflatex -interaction=nonstopmode esg_survey.tex
+pdflatex -interaction=nonstopmode esg_survey.tex
 
-# Deploy Quarto to GitHub Pages
-./scripts/sync_to_docs.sh LectureN
+# Quick compile (single pass, no bib — for drafting)
+cd Paper && pdflatex -interaction=nonstopmode esg_survey.tex
 
 # Quality score
-python scripts/quality_score.py Quarto/file.qmd
+python scripts/quality_score.py Paper/esg_survey.tex
 ```
 
 ---
@@ -96,38 +95,29 @@ python scripts/quality_score.py Quarto/file.qmd
 
 ---
 
-<!-- CUSTOMIZE: Replace the example entries below with your own
-     Beamer environments and Quarto CSS classes. These are examples
-     from the original project — delete them and add yours. -->
+## LaTeX Paper Conventions
 
-## Beamer Custom Environments
-
-| Environment       | Effect        | Use Case       |
+| Element           | Convention    | Use Case       |
 |-------------------|---------------|----------------|
-| `[your-env]`      | [Description] | [When to use]  |
-
-<!-- Example entries (delete and replace with yours):
-| `keybox` | Gold background box | Key points |
-| `highlightbox` | Gold left-accent box | Highlights |
-| `definitionbox[Title]` | Blue-bordered titled box | Formal definitions |
--->
-
-## Quarto CSS Classes
-
-| Class              | Effect        | Use Case       |
-|--------------------|---------------|----------------|
-| `[.your-class]`    | [Description] | [When to use]  |
-
-<!-- Example entries (delete and replace with yours):
-| `.smaller` | 85% font | Dense content slides |
-| `.positive` | Green bold | Good annotations |
--->
+| `\textcite{key}`  | Inline author-year citation | "Smith (2020) find that..." |
+| `\citep{key}`     | Parenthetical citation | "...(Smith, 2020)" |
+| `\begin{table}[h!]` | Float placement | All tables use `h!` for proximity |
+| `\begin{figure}[h!]` | Float placement | All figures use `h!` for proximity |
+| Section labels    | `sec:theory`, `sec:climate`, etc. | Cross-referencing |
 
 ---
 
-## Current Project State
+## Current Paper State
 
-| Lecture | Beamer | Quarto | Key Content |
-|---------|--------|--------|-------------|
-| 1: [Topic] | `Lecture01_Topic.tex` | `Lecture1_Topic.qmd` | [Brief description] |
-| 2: [Topic] | `Lecture02_Topic.tex` | -- | [Brief description] |
+| Section | File | Status | Key Content |
+|---------|------|--------|-------------|
+| 1: Introduction | `sections/intro.tex` | Stub | Motivation, scope, road map |
+| 2: Theoretical ESG Models | `sections/theory.tex` | Stub | Shareholder vs. stakeholder, agency, signaling |
+| 3: Climate Risk & Insurance | `sections/climate.tex` | Stub | Physical/transition risk, insurance markets |
+| 4: Regulation & Policy | `sections/regulation.tex` | Stub | Mandatory disclosure, carbon pricing, SEC rules |
+| 5: ESG Effects on Investment, Consumption & Employment | `sections/investment.tex` | Stub | Capital allocation, consumer behavior, labor |
+| 6: ESG Disclosure & Assurance | `sections/disclosure.tex` | Stub | Voluntary vs. mandatory, greenwashing |
+| 7: Asset Management Industry | `sections/asset_mgmt.tex` | Stub | ESG funds, index inclusion, stewardship |
+| 8: Firm Valuation, Cost of Capital & Asset Pricing | `sections/valuation.tex` | Stub | ESG premia, cost of equity, factor models |
+| 9: Future Research Directions | `sections/future.tex` | Stub | Open questions, recommended agenda |
+| 10: Conclusion | `sections/conclusion.tex` | Stub | Summary and synthesis |

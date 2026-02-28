@@ -48,26 +48,22 @@ Repeat
 
 ---
 
-## Non-Negotiables (Customize These)
+## Non-Negotiables
 
-<!-- Replace with YOUR project's locked-in preferences -->
-
-- [YOUR PATH CONVENTION] (e.g., `here::here()` for R, relative paths for LaTeX)
-- [YOUR SEED CONVENTION] (e.g., `set.seed()` once at top for stochastic code)
-- [YOUR FIGURE STANDARDS] (e.g., white bg, 300 DPI, custom theme)
-- [YOUR COLOR PALETTE] (e.g., institutional colors)
-- [YOUR TOLERANCE THRESHOLDS] (e.g., 1e-6 for point estimates)
+- **Path convention:** Relative paths from `Paper/` directory (e.g., `\bibliography{../Bibliography_base}`, `\includegraphics{../Figures/fig1}`)
+- **Figure standards:** Publication-ready — white background, 300 DPI minimum, greyscale-compatible, descriptive captions with units
+- **Color palette:** Conservative academic — blue/grey for diagrams; avoid red/green (conflates ESG sentiment with good/bad)
+- **Tolerance thresholds:** N/A (pure literature survey; no numerical replication targets)
+- **Citation keys:** `AuthorYear_keyword` format (e.g., `Friedman1970_social`, `Berg2022_disagreement`)
 
 ---
 
 ## Preferences
 
-<!-- Fill in as you discover your working style -->
-
-**Visual:** [How you want figures/plots handled]
-**Reporting:** [Concise bullets? Detailed prose? Details on request?]
+**Visual:** Publication-ready figures with descriptive captions; summary tables in `booktabs` style
+**Reporting:** Concise academic prose; use tables to summarize literature when 5+ papers cover a topic
 **Session logs:** Always (post-plan, incremental, end-of-session)
-**Replication:** [How strict? Flag near-misses?]
+**Literature:** Flag when characterizing a paper's finding — always quote the specific result, not a paraphrase
 
 ---
 
